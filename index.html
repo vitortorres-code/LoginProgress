@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>LoginProgress</title>
+</head>
+<body>
+    <main>
+        <section class="header"> 
+            <div class="image">
+                <img src="imagens/logodef.png" alt="">
+            </div>          
+                <h1>Welcome back</h1>
+                <p>Enter with your email and password for login</p>
+        </section>
+        <form class="formulario">            
+                <input type="email" id="login" placeholder="Enter e-mail">
+                <input type="password" id="senha" placeholder=" Enter Password">
+                <button class="logon" onclick="logar(); return false" >Log in</button>
+                <div class="divider">
+                    <p>Or authorize with</p>
+                </div>
+                <button class="google"><i class="fa-brands fa-google"></i> Google</button>               
+        </form>
+        <section class="options">
+                   
+            <div class="forgot-signup">
+                <a href="#">Forgot password?</a>
+                <p>Don't have an account? <a href="#">Sing up</a></p>
+            </div>
+        </section>   
+    </main>
+    
+    
+    <script>
+
+        function logar(){
+
+            var login = document.getElementById('login').value;
+            var senha = document.getElementById('senha').value;
+
+            if(login == "vitor" && senha == "vitor"){
+                location.href = "home.html"
+            }else if(login == "" && senha == ""){
+                alert ('Campo vazio')
+
+            }
+
+        }
+
+    </script>
+</body>
+</html>
