@@ -58,7 +58,7 @@ img{
 form{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
 }
 input{
     color: black;
@@ -75,10 +75,14 @@ form input:focus{
     border-color: #2D44F5;
     box-shadow: 0 0 5px #2D44F5;
 }
-#registerBtn{
+.btn-erro p{
+    font-size: 0.8em;
+    color: red;
+}
+#register-loginBtn{
+    width: 100%;
     border: none;
     padding: 9px;
-    margin-top: 15px;
     border-radius: 4px;
     background-color: #2D44F5;
     color: white;

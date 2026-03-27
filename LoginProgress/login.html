@@ -16,26 +16,29 @@
                 <h1>Welcome back</h1>
                 <p>Enter with your email and password for login</p>
         </section>
-        <form class="formulario">
+        <form class="formulario" id="form">
             <div class="form-inps">
-                <label for="login" id="obrigatorio">E-mail</label>
-                <input type="email" id="login" placeholder="Enter e-mail">
+                <label for="email" id="obrigatorio">E-mail</label>
+                <input type="text" id="email" placeholder="Enter E-mail">
             </div>
             <div class="form-inps">
                 <label for="password" id="obrigatorio">Password</label>
                 <input type="password" id="password" placeholder=" Enter Password">
             </div>
-            <button class="login" id="registerBtn" onclick="logar(); return false" >Log in</button>
+            <div class="btn-erro">
+                <p id="erro"></p>
+                <button class="login" id="register-loginBtn">Log in</button>
+            </div>
             <div class="divider">
                 <p>Or authorize with</p>
             </div>
-            <button class="google"><i class="fa-brands fa-google"></i> Google</button>               
+            <button type="button" class="google"><i class="fa-brands fa-google"></i> Google</button>               
         </form>
         <section class="options">
                    
             <div class="forgot-signup">
                 <a href="#">Forgot password?</a>
-                <p>Don't have an account? <a href="signup.html">Sing up</a></p>
+                <p>Don't have an account? <a href="register.html">Sing up</a></p>
             </div>
         </section>   
     </main>
@@ -43,19 +46,33 @@
     
     <script>
 
-        function logar(){
+        const form = document.getElementById('form');
+        const erro = document.getElementById('erro');
 
-            var login = document.getElementById('login').value;
-            var senha = document.getElementById('senha').value;
+        form.addEventListener("submit", function(event){
+            event.preventDefault();
 
-            if(login == "vitor" && senha == "vitor"){
-                location.href = "home.html"
-            }else if(login == "" && senha == ""){
-                alert ('Campo vazio')
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const dadosSalvos = JSON.parse(localStorage.getItem("usuario"));
+
+            if (!dadosSalvos) {
+                erro.textContent = "Nenhum usuario cadastrado!";
+                return;
+
+            }
+            if (email === dadosSalvos.email && password === dadosSalvos.password){
+                erro.textContent = "";
+
+                window.location.href = "home.html"
+
+            }else{
+                erro.textContent = "email ou senha invalidos!";
 
             }
 
-        }
+        });
 
     </script>
 </body>

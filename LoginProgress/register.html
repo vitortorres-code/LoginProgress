@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>SignUpProgress</title>
+    <title>RegisterProgress</title>
 </head>
 <body>
     <main>
@@ -16,7 +16,7 @@
                 <h1>Create your account</h1>
                 <p>Enter your details to get started</p>
         </section>
-        <form class="formulario">
+        <form class="formulario" id="form">
             <div class="form-inps">
                 <label for="usuario" id="obrigatorio" >User</label>
                 <input type="text" id="user" placeholder="User">
@@ -29,11 +29,14 @@
                 <label for="password" id="obrigatorio" >Password</label>
                 <input type="password" id="password" placeholder=" Enter Password">
             </div>
-            <button id="registerBtn">Register</button>
+            <div class="btn-erro">
+                <p id="erro"></p>
+                <button type="submit" id="register-loginBtn">Register</button>
+            </div>
             <div class="divider">
                 <p>Or authorize with</p>
             </div>
-            <button class="google"><i class="fa-brands fa-google"></i> Google</button>               
+            <button type="button" class="google"><i class="fa-brands fa-google"></i> Google</button>               
         </form>
         <section class="options">                   
             <div class="forgot-signup">
@@ -43,7 +46,37 @@
     </main>
 
     <script>
-        const button = document.getElementById('registerBtn')
+
+        const form = document.getElementById('form');
+
+        form.addEventListener("submit", function(event){
+
+            event.preventDefault();
+
+            const user = document.getElementById('user').value;            
+            const email = document.getElementById('email').value;          
+            const password = document.getElementById('password').value;
+
+            if ( !user ||!email || !password ){
+                erro.textContent = "Preencha todos os campos corretamente!"
+                returd;
+            }else{
+                alert("usuario cadastrado")
+            }
+
+            erro.textContent = ""; // limpa o erro
+
+            const dados = {
+                user: user,
+                email: email,
+                password: password
+            };
+            
+            localStorage.setItem("usuario", JSON.stringify(dados));
+
+        });
+
+
     </script>
 
 </body>
