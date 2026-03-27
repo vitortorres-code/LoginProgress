@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>SignUpProgress</title>
+</head>
+<body>
+    <main>
+        <section class="header"> 
+            <div class="image">
+                <img src="imagens/logodef.png" alt="">
+            </div>          
+                <h1>Create your account</h1>
+                <p>Enter your details to get started</p>
+        </section>
+        <form class="formulario">
+            <div class="form-inps">
+                <label for="usuario" id="obrigatorio" >User</label>
+                <input type="text" id="user" placeholder="User">
+            </div>
+            <div class="form-inps">
+                <label for="email" id="obrigatorio" >E-mail</label>
+                <input type="email" id="email" placeholder="Enter E-mail">
+            </div>
+            <div class="form-inps">
+                <label for="password" id="obrigatorio" >Password</label>
+                <input type="password" id="password" placeholder=" Enter Password">
+            </div>
+            <button id="registerBtn">Register</button>
+            <div class="divider">
+                <p>Or authorize with</p>
+            </div>
+            <button class="google"><i class="fa-brands fa-google"></i> Google</button>               
+        </form>
+        <section class="options">                   
+            <div class="forgot-signup">
+                <p>Already have an account? <a href="login.html">Log in</a></p>
+            </div>
+        </section>   
+    </main>
+
+    <script>
+        const button = document.getElementById('registerBtn')
+    </script>
+
+</body>
+</html>
