@@ -8,7 +8,20 @@
 </head>
 <body>
     <main>
-        Bem vindo!!
+        <h1 id="nomePerfil"></h1>
     </main>
+    <script>
+
+        const usuario = JSON.parse(localStorage.getItem("usuario"));
+
+        if (usuario && usuario.user) {
+            document.getElementById('nomePerfil').textContent = `bem-Vindo, ${usuario.user}!`;
+
+        }else{
+            document.getElementById('nomePerfil').textContent = "Bem-vindo"
+
+        }
+
+    </script>
 </body>
 </html>
