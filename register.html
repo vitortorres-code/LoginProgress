@@ -59,7 +59,7 @@
             event.preventDefault();
 
             const user = document.getElementById('user').value;            
-            const email = document.getElementById('email').value;          
+            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
 
@@ -81,7 +81,7 @@
                 erro.textContent = "Preencha todos os campos corretamente!"
                 return;
             }
-            if (!email.includes("@")){
+            if (!email.includes("@" && ".")){
                 erro.textContent = "email invalido!"
                 return;
             }
@@ -96,6 +96,7 @@
             else{
                 alert("usuario cadastrado")
             }
+
             erro.textContent = ""; // limpa o erro
 
             const dados = {
