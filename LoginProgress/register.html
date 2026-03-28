@@ -18,15 +18,15 @@
         </section>
         <form class="formulario" id="form">
             <div class="form-inps">
-                <label for="usuario" id="obrigatorio" >User</label>
+                <label for="usuario" class="obrigatorio" >User</label>
                 <input type="text" id="user" placeholder="User">
             </div>
             <div class="form-inps">
-                <label for="email" id="obrigatorio" >E-mail</label>
+                <label for="email" class="obrigatorio" >E-mail</label>
                 <input type="email" id="email" placeholder="Enter E-mail">
             </div>
             <div class="form-inps">
-                <label for="password" id="obrigatorio" >Password</label>
+                <label for="password" class="obrigatorio" >Password</label>
                 <input type="password" id="password" placeholder=" Enter Password">
             </div>
             <div class="btn-erro">
@@ -48,6 +48,7 @@
     <script>
 
         const form = document.getElementById('form');
+        const erro = document.getElementById('erro');
 
         form.addEventListener("submit", function(event){
 
@@ -57,9 +58,9 @@
             const email = document.getElementById('email').value;          
             const password = document.getElementById('password').value;
 
-            if ( !user ||!email || !password ){
+            if (!user ||!email ||!password ){
                 erro.textContent = "Preencha todos os campos corretamente!"
-                returd;
+                return;
             }else{
                 alert("usuario cadastrado")
             }

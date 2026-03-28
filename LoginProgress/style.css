@@ -51,7 +51,7 @@ img{
 .form-inps label{
     font-size: 0.9em;
 }
-#obrigatorio::after{
+.obrigatorio::after{
     content: " *";
     color: rgba(255, 0, 0, 0.534);
 }
