@@ -23,11 +23,15 @@
             </div>
             <div class="form-inps">
                 <label for="email" class="obrigatorio" >E-mail</label>
-                <input type="email" id="email" placeholder="Enter E-mail">
+                <input type="text" id="email" placeholder="Enter E-mail">
             </div>
             <div class="form-inps">
                 <label for="password" class="obrigatorio" >Password</label>
                 <input type="password" id="password" placeholder=" Enter Password">
+            </div>
+            <div class="form-inps">
+                <label for="confirmPassword" class="obrigatorio" >Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password">
             </div>
             <div class="btn-erro">
                 <p id="erro"></p>
@@ -57,14 +61,41 @@
             const user = document.getElementById('user').value;            
             const email = document.getElementById('email').value;          
             const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            document.getElementById('user').addEventListener('input', function(){
+                erro.textContent = "";
+            });
+            document.getElementById('email').addEventListener('input', function(){
+                erro.textContent = "";
+            });
+            document.getElementById('password').addEventListener('input', function(){
+                erro.textContent = "";
+            });
+            document.getElementById('confirmPassword').addEventListener('input', function(){
+                erro.textContent = ""
+            })
+
 
             if (!user ||!email ||!password ){
                 erro.textContent = "Preencha todos os campos corretamente!"
                 return;
-            }else{
+            }
+            if (!email.includes("@")){
+                erro.textContent = "email invalido!"
+                return;
+            }
+            if (password.length < 6){
+                erro.textContent = "a senha precisa ter no minimo 6 caracteres!"               
+                return;
+            }
+            if (password !== confirmPassword){
+                erro.textContent = "as senhas nao coincidem!"
+                return;
+            }
+            else{
                 alert("usuario cadastrado")
             }
-
             erro.textContent = ""; // limpa o erro
 
             const dados = {
