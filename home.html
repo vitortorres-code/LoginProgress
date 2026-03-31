@@ -12,9 +12,9 @@
     </main>
     <script>
 
-        const usuario = JSON.parse(localStorage.getItem("usuario"));
+        const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
 
-        if (usuario && usuario.user) {
+        if (usuario && usuario.user){
             document.getElementById('nomePerfil').textContent = `bem-Vindo, ${usuario.user}!`;
 
         }else{

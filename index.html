@@ -55,21 +55,24 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            const dadosSalvos = JSON.parse(localStorage.getItem("usuario"));
+            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-            if (!dadosSalvos) {
-                erro.textContent = "Nenhum usuario cadastrado!";
+            const usuarioEncontrado = usuarios.find(u => u.email === email)
+
+            if (!usuarioEncontrado){
+                erro.textContent = "email nao cadastrado!";
                 return;
             }
-            if (email === dadosSalvos.email && password === dadosSalvos.password){
-                erro.textContent = "";
-                
-                window.location.href = "home.html"
-
-            }else{
-                erro.textContent = "email ou senha invalidos!";
-
+            if (usuarioEncontrado.password !== password){
+                erro.textContent = "senha incorreta!"
+                return;
             }
+
+            erro.textContent = "";
+            localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+            window.location.href = "home.html"
+
+            
 
         });
 

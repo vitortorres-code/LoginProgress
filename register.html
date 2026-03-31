@@ -99,13 +99,11 @@
 
             erro.textContent = ""; // limpa o erro
 
-            const dados = {
-                user: user,
-                email: email,
-                password: password
-            };
-            
-            localStorage.setItem("usuario", JSON.stringify(dados));
+            const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+            usuarios.push({ user, email, password });
+
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
         });
 
