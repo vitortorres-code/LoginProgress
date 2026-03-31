@@ -107,6 +107,10 @@ form input:focus{
   height: 1px;
   background: white;
 }
+#remember{
+    margin-top:5px;
+}
+
 .google{
     display: flex;
     justify-content: center;

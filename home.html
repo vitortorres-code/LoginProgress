@@ -9,17 +9,24 @@
 <body>
     <main>
         <h1 id="nomePerfil"></h1>
+        <button onclick="logout()" >sair</button>
     </main>
     <script>
 
-        const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+        const usuario = JSON.parse(sessionStorage.getItem("usuarioLogado")) || JSON.parse(localStorage.getItem("usuarioLogado"));
+
+        if(!usuario){
+            window.location.href = "index.html"
+        }
 
         if (usuario && usuario.user){
             document.getElementById('nomePerfil').textContent = `bem-Vindo, ${usuario.user}!`;
+        }
 
-        }else{
-            document.getElementById('nomePerfil').textContent = "Bem-vindo"
-
+        function logout(){
+            localStorage.removeItem("usuarioLogado")
+            sessionStorage.removeItem("usuarioLogado")
+            window.location.href = "index.html"
         }
 
     </script>

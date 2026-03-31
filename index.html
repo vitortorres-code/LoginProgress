@@ -28,6 +28,7 @@
             <div class="btn-erro">
                 <p id="erro"></p>
                 <button class="login" id="register-loginBtn">Log in</button>
+                <input type="checkbox" id="remember"> lembrar de mim
             </div>
             <div class="divider">
                 <p>Or authorize with</p>
@@ -49,6 +50,12 @@
         const form = document.getElementById('form');
         const erro = document.getElementById('erro');
 
+        const usuarioLog = JSON.parse(localStorage.getItem("usuarioLogado")) || JSON.parse(sessionStorage.getItem("usuarioLogado"));
+
+        if(usuarioLog){
+            window.location.href = "home.html"
+        }
+
         form.addEventListener("submit", function(event){
             event.preventDefault();
 
@@ -67,12 +74,16 @@
                 erro.textContent = "senha incorreta!"
                 return;
             }
+            const remember = document.getElementById("remember").checked;
 
-            erro.textContent = "";
-            localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+            if(remember){
+                localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+            }else{
+                sessionStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+            }    
+
+            erro.textContent = "";            
             window.location.href = "home.html"
-
-            
 
         });
 
