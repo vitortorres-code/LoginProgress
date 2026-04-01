@@ -81,7 +81,7 @@
                 erro.textContent = "Preencha todos os campos corretamente!"
                 return;
             }
-            if (!email.includes("@" && ".")){
+            if (!email.includes("@") || !email.includes(".")){
                 erro.textContent = "email invalido!"
                 return;
             }
