@@ -54,6 +54,19 @@
         const form = document.getElementById('form');
         const erro = document.getElementById('erro');
 
+        document.getElementById('user').addEventListener('input', function(){
+            erro.textContent = "";
+        });
+        document.getElementById('email').addEventListener('input', function(){
+            erro.textContent = "";
+        });
+        document.getElementById('password').addEventListener('input', function(){
+            erro.textContent = "";
+        });
+        document.getElementById('confirmPassword').addEventListener('input', function(){
+            erro.textContent = ""
+        })
+
         form.addEventListener("submit", function(event){
 
             event.preventDefault();
@@ -63,18 +76,7 @@
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
 
-            document.getElementById('user').addEventListener('input', function(){
-                erro.textContent = "";
-            });
-            document.getElementById('email').addEventListener('input', function(){
-                erro.textContent = "";
-            });
-            document.getElementById('password').addEventListener('input', function(){
-                erro.textContent = "";
-            });
-            document.getElementById('confirmPassword').addEventListener('input', function(){
-                erro.textContent = ""
-            })
+            
 
 
             if (!user ||!email ||!password ){
@@ -93,18 +95,23 @@
                 erro.textContent = "as senhas nao coincidem!"
                 return;
             }
-            
-            alert("usuario cadastrado")
-            
+         
             erro.textContent = "";
 
             const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
+            const usuarioExistente = usuarios.find(u => u.email === email);
+            
+            if(usuarioExistente){
+                erro.textContent = "Email ja cadastrado!"
+                return;
+            } //verifica se ha algum email igual na lista e retorna erro
+            
             usuarios.push({ user, email, password });
 
             localStorage.setItem("usuarios", JSON.stringify(usuarios));
-
-            window.location.href = "index.html"
+            alert("usuario cadastrado");
+            window.location.href = "index.html";
 
         });
 
